@@ -22,17 +22,16 @@ class Redactor(AbstractUser):
         ordering = ["username"]
 
     def __str__(self):
-        return f"{self.username} ({self.first_name} {self.last_name}"
+        return f"{self.username} ({self.first_name} {self.last_name})"
 
 
 class Newspaper(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=100)
     content = models.TextField()
     published_date = models.DateField()
     topic = models.ForeignKey(
         Topic,
         on_delete=models.CASCADE,
-        related_name="topic",
     )
     publishers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="newspapers")
 
