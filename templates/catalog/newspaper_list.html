@@ -5,7 +5,8 @@
   {% if newspaper_list %}
     <ul>
       {% for newspaper in newspaper_list %}
-        <li><a href="#">{{ newspaper.title }}</a>
+        <li>
+          <a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a>
         (topics: <a href="#">{{ newspaper.topic.name }}</a>, published: {{ newspaper.published_date }})
         </li>
       {% endfor %}

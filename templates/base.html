@@ -30,10 +30,13 @@
 
         {% endblock %}
 <!---------------------------------end Content----------------------------->
-
+<!---------------------------------start Pagination----------------------------->
+        {% block pagination %}
+          {% include "includes/pagination.html" %}
+        {% endblock %}
+<!---------------------------------end Pagination----------------------------->      
       </div>
     </div>
-
   </div>
 </body>
 </html>
