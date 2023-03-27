@@ -17,6 +17,9 @@ class Topic(models.Model):
 class Redactor(AbstractUser):
     years_of_experience = models.IntegerField(null=True, blank=True)
 
+    def get_absolute_url(self):
+        return reverse("catalog:redactor-detail", args=[str(self.id)])
+
     class Meta:
         verbose_name = "Redactor"
         verbose_name_plural = "Redactors"
