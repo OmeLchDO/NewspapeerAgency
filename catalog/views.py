@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from catalog.models import Newspaper, Redactor, Topic
@@ -38,6 +39,26 @@ class TopicListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 3
 
 
+class TopicCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:topic-list")
+    template_name = "catalog/topic_form.html"
+
+
+class TopicUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("catalog:topic-list")
+    template_name = "catalog/topic_form.html"
+
+
+class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Topic
+    template_name = "catalog/topic_confirm_delete.html"
+    success_url = reverse_lazy("catalog:topic-list")
+
+
 class TopicDetailView(LoginRequiredMixin, generic.DetailView):
     model = Topic
 
@@ -62,3 +83,5 @@ class RedactorListView(LoginRequiredMixin, generic.ListView):
 
 class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Redactor
+
+
