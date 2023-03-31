@@ -10,6 +10,7 @@ from catalog.views import (
     NewspaperDetailView,
     RedactorListView,
     RedactorDetailView,
+    RedactorCreateView,
 )
 
 urlpatterns = [
@@ -61,6 +62,11 @@ urlpatterns = [
         RedactorDetailView.as_view(),
         name="redactor-detail"
     ),
+
+    path(
+        "redactors/create/",
+        RedactorCreateView.as_view(),
+        name="redactor-create"),
 ]
 
 app_name = "catalog"
