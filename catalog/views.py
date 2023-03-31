@@ -1,12 +1,11 @@
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, Http404
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from catalog.forms import RedactorCreateForm
+from catalog.forms import RedactorCreateForm, NewspaperForm
 from catalog.models import Newspaper, Redactor, Topic
 
 
@@ -75,6 +74,16 @@ class NewspaperDetailView(LoginRequiredMixin, generic.DetailView):
     model = Newspaper
 
 
+class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Newspaper
+    form_class = NewspaperForm
+
+
+class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Newspaper
+    form_class = NewspaperForm
+
+
 class RedactorListView(LoginRequiredMixin, generic.ListView):
     model = Redactor
     template_name = "catalog/redactor_list.html"
@@ -91,3 +100,5 @@ class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = RedactorCreateForm
     success_url = reverse_lazy("catalog:redactor-list")
     template_name = "catalog/redactor_form.html"
+
+

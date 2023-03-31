@@ -18,3 +18,15 @@ class RedactorCreateForm(UserCreationForm):
         fields = UserCreationForm.Meta.fields + (
          "first_name", "last_name", "years_of_experience"
         )
+
+
+class NewspaperForm(forms.ModelForm):
+    redactors = forms.ModelMultipleChoiceField(
+        queryset=get_user_model().objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+
+    class Meta:
+        model = Newspaper
+        fields = "__all__"

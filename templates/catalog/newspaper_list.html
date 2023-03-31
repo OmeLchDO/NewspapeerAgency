@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Newspapers List</h1>
+  <h1>
+    Newspapers List
+    <a style="float: right" href="{% url 'catalog:newspaper-create' %}">+</a>
+  </h1>
+  </h1>
   {% if newspaper_list %}
     <ul>
       {% for newspaper in newspaper_list %}
