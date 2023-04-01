@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import MinValueValidator
-
+from captcha.fields import CaptchaField
 from catalog.models import Redactor, Newspaper
 
 
@@ -35,6 +35,7 @@ class NewspaperForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
+    captcha = CaptchaField()
 
     class Meta:
         model = Newspaper

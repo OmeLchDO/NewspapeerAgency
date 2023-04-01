@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "catalog",
+    "debug_toolbar",
     "crispy_forms",
     "crispy_bootstrap5",
-    "debug_toolbar"
+    "captcha"
 ]
 
 MIDDLEWARE = [
