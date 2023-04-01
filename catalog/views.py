@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from catalog.forms import RedactorCreateForm, NewspaperForm, NewspaperSearchForm
+from catalog.forms import RedactorCreateForm, NewspaperForm, NewspaperSearchForm, RedactorSearchForm, TopicSearchForm
 from catalog.models import Newspaper, Redactor, Topic
 
 
@@ -37,6 +37,26 @@ class TopicListView(LoginRequiredMixin, generic.ListView):
     template_name = "catalog/topic_list.html"
     queryset = Topic.objects.all()
     paginate_by = 3
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        name = self.request.GET.get("name", "")
+
+        context = super(TopicListView, self).get_context_data(**kwargs)
+        context["search_form"] = TopicSearchForm(initial={
+            "name": name
+        })
+
+        return context
+
+    def get_queryset(self):
+        form = TopicSearchForm(self.request.GET)
+
+        if form.is_valid():
+            return self.queryset.filter(
+                name__icontains=form.cleaned_data["name"]
+            )
+
+        return self.queryset
 
 
 class TopicCreateView(LoginRequiredMixin, generic.CreateView):
@@ -111,6 +131,24 @@ class RedactorListView(LoginRequiredMixin, generic.ListView):
     template_name = "catalog/redactor_list.html"
     queryset = Redactor.objects.all()
     paginate_by = 3
+
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
+        context = super(RedactorListView, self).get_context_data(**kwargs)
+
+        username = self.request.GET.get("username", "")
+
+        context["search_form"] = RedactorSearchForm(
+            initial={"username": username}
+        )
+
+        return context
+
+    def get_queryset(self) -> None:
+        username = self.request.GET.get("username")
+
+        if username:
+            return self.queryset.filter(username__icontains=username)
+        return self.queryset
 
 
 class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
