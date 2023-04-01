@@ -10,6 +10,7 @@ from catalog.views import (
     NewspaperDetailView,
     NewspaperCreateView,
     NewspaperUpdateView,
+    NewspaperDeleteView,
     RedactorListView,
     RedactorDetailView,
     RedactorCreateView,
@@ -63,6 +64,12 @@ urlpatterns = [
         "newspapers/<int:pk>/update",
         NewspaperUpdateView.as_view(),
         name="newspaper-update"
+    ),
+
+    path(
+        "newspapers/<int:pk>/delete",
+        NewspaperDeleteView.as_view(),
+        name="newspaper-delete"
     ),
 
     path(

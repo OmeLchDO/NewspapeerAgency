@@ -88,7 +88,7 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
     template_name = "catalog/newspaper_list.html"
     paginate_by = 3
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, *, object_list=None, **kwargs) -> dict:
         context = super(NewspaperListView, self).get_context_data(**kwargs)
 
         title = self.request.GET.get("title", "")
@@ -99,7 +99,7 @@ class NewspaperListView(LoginRequiredMixin, generic.ListView):
 
         return context
 
-    def get_queryset(self):
+    def get_queryset(self) -> None:
         queryset = Newspaper.objects.all()
 
         form = NewspaperSearchForm(self.request.GET)
@@ -124,6 +124,12 @@ class NewspaperCreateView(LoginRequiredMixin, generic.CreateView):
 class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Newspaper
     form_class = NewspaperForm
+
+
+class NewspaperDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Newspaper
+    template_name = "catalog/newspaper_confirm_delete.html"
+    success_url = reverse_lazy("catalog:newspaper-list")
 
 
 class RedactorListView(LoginRequiredMixin, generic.ListView):

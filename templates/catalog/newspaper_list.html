@@ -14,14 +14,30 @@
 
 
   {% if newspaper_list %}
-    <ul>
+    <table class="table">
+      <tr style="background-color: rgb(153, 150, 233);">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
       {% for newspaper in newspaper_list %}
-        <li>
-          <a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a>
-        (topics: <a href="#">{{ newspaper.topic.name }}</a>, published: {{ newspaper.published_date }})
-        </li>
+        <tr>
+          <td>
+            {{ newspaper.id }}
+          </td>
+          <td>
+            <a href="{% url 'catalog:newspaper-detail' pk=newspaper.id %}">{{ newspaper.title }}</a>
+          </td>
+          <td>
+            <a href="{% url "catalog:newspaper-update" pk=newspaper.id %} ">UPDATE</a>
+          </td>
+          <td>
+            <a href="{% url "catalog:newspaper-delete" pk=newspaper.id %} ">DELETE</a>
+          </td>
+        </tr>
       {% endfor %}
-    </ul>
+    </table>
   {% else %}
     <p>There are no newspapers</p>
   {% endif %}
