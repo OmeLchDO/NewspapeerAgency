@@ -1,14 +1,18 @@
+
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <h1>Newspaper Agency Home</h1>
-  <p>Welcome to the Newspaper Agency</p>
-  <h3>Agency content</h3>
+  <div class="content-details">
+    <h2>Welcome to the Newspaper Agency!</h2>
+    <p>You can find many interesting newspapers articles on this site.
+      You can view newspapers articles only on the topic you are interested in or watch the latest news.</p>
+
   <ul>
-    <li>Num newspapers: {{ num_newspapers }}</li>
-    <li>Num redactors: {{ num_redactors }}</li>
-    <li>Num topics: {{ num_topics }}</li>
+    <li><strong>Topics:</strong> {{ num_topics }}</li>
+    <li><strong>Redactors:</strong> {{ num_redactors }}</li>
+    <li><strong>Newspapers:</strong> {{ num_newspapers }}</li>
   </ul>
 
-  <p> You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+  </div>
 {% endblock %}

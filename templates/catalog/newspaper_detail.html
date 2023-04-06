@@ -1,21 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    Title: {{ newspaper.title }}
-    <a style="float: right" href="{% url 'catalog:newspaper-update' pk=newspaper.id %}">Edit</a>
-  </h1>
-    <p>{{ newspaper.content }}</p>
-  <div class="ml-3">
-    <h3>Redactors</h3>
+<div class="content-details">
+  <h1 style="text-align: center">{{ newspaper.title }}</h1>
+  <p>{{ newspaper.content }}</p>
+  {% if user in newspaper.publishers.all or user.is_staff %}
+    <a href="{% url 'catalog:newspaper-update' pk=newspaper.id %}" class="btn btn-primary float-right">Update information</a>
+    <a href="{% url 'catalog:newspaper-delete' pk=newspaper.id %}" class="btn btn-danger float-right">Delete newspaper</a>
+  {% endif %}
 
-    {% for redactor in newspaper.redactors.all %}
-      <hr>
-      <p class="text-muted"><strong>Id:</strong>{{ redactor.id }}</p>
-      <p>
-        <strong>Full name:</strong>
-        {{ redactor.first_name }} {{ redactor.last_name }}
-      </p>
+  <br>
+  <p>Published - {{ newspaper.published_date }}</p>
+  <p>Topic - {{ newspaper.topic }}</p>
+  {% if newspaper.publishers %}
+    <p>Redactors:</p>
+    {% for publisher in newspaper.publishers.all %}
+      <li><a href="{% url 'catalog:redactor-detail' pk=publisher.id %}">{{ publisher.username }} - ({{ publisher.first_name }} {{ publisher.last_name }})</a></li>
     {% endfor %}
-    </div>
+
+  {% endif %}
+</div>
 {% endblock %}

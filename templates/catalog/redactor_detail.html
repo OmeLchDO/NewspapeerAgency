@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ redactor.first_name }} {{ redactor.last_name }} ({{ redactor.username }})</h1>
+  <div class="content-details">
+   <h1>{{ redactor.first_name }} {{ redactor.last_name }} ({{ redactor.username }})</h1>
 
-  <div class="ml-6">
-    <h4>Experience: {{ redactor.years_of_experience}} years</h4>
+    <h3>Experience: {{ redactor.years_of_experience}} years</h3>
 
-    <h8><strong>Available newspapers titles:</strong></h8>
+    <h6><strong>Available newspapers titles:</strong></h6>
     {% for newspaper in redactor.newspapers.all %}
       <ul>
         <li>

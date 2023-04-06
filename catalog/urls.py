@@ -6,6 +6,7 @@ from catalog.views import (
     TopicCreateView,
     TopicUpdateView,
     TopicDeleteView,
+    TopicDetailView,
     NewspaperListView,
     NewspaperDetailView,
     NewspaperCreateView,
@@ -40,6 +41,12 @@ urlpatterns = [
         "topics/<int:pk>/delete",
         TopicDeleteView.as_view(),
         name="topic-delete"
+    ),
+
+    path(
+        "topic/detail/<int:pk>/",
+        TopicDetailView.as_view(),
+        name="topic-detail",
     ),
 
     path(
