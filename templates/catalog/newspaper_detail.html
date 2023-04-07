@@ -12,12 +12,11 @@
   <br>
   <p>Published - {{ newspaper.published_date }}</p>
   <p>Topic - {{ newspaper.topic }}</p>
-  {% if newspaper.publishers %}
-    <p>Redactors:</p>
-    {% for publisher in newspaper.publishers.all %}
-      <li><a href="{% url 'catalog:redactor-detail' pk=publisher.id %}">{{ publisher.username }} - ({{ publisher.first_name }} {{ publisher.last_name }})</a></li>
-    {% endfor %}
 
-  {% endif %}
+  {% for redactor in newspaper.redactors.all %}
+      <strong>Redactor:</strong>
+      {{ redactor.first_name }} {{ redactor.last_name }}
+  {% endfor %}
+
 </div>
 {% endblock %}
