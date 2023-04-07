@@ -1,5 +1,6 @@
 {% load static %}
 <div class="topnav">
+  <li style="height: 25px; width: 25px; color: white">{{ user.username }}</li>
   <img src="{% static 'images/favicon.png' %}" alt="" style="height: 25px; width: 25px" class="float-left">
   <a href="{% url 'catalog:index' %}" class="nav-element">Home</a>
   <a href="{% url 'catalog:topic-list' %}" class="nav-element">Topics</a>
@@ -9,8 +10,8 @@
     <a href="{% url 'catalog:redactor-detail' pk=user.id %}" class="nav-element">My profile</a>
     <a href="{% url 'logout' %}" class="nav-element">Logout</a>
   {% else %}
-     <a href="{% url 'catalog:redactor-create' %}" class="nav-element">Sign up</a>
     <a href="{% url 'login' %}" class="nav-element">Log in</a>
   {% endif %}
 
 </div>
+

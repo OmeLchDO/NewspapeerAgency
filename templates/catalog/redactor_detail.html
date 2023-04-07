@@ -8,11 +8,9 @@
 
     <h6><strong>Available newspapers titles:</strong></h6>
     {% for newspaper in redactor.newspapers.all %}
-      <ul>
         <li>
-          <a href="{{ newspaper.get_absolute_url }}">{{ newspaper.title }}</a>
+          <a href="{{ newspaper.get_absolute_url }}"> {{ newspaper.title }}</a>
         </li>
-      </ul>
     {% endfor %}
   </div>
 {% endblock %}
