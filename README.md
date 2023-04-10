@@ -10,6 +10,6 @@ The Django-based project allows users to keep track of news articles on various 
 - python manage.py runserver
 
 # Check it out
-Superuser:
+User:
 - login: adminuser
 - password: qqqqqqq1
