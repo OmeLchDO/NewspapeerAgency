@@ -23,5 +23,3 @@ class RedactorAdmin(UserAdmin):
 @admin.register(Topic)
 class TopicAdmin(admin.ModelAdmin):
     search_fields = ["name"]
-
-

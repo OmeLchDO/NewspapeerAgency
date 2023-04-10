@@ -81,6 +81,8 @@ class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class TopicDetailView(LoginRequiredMixin, generic.DetailView):
     model = Topic
+    template_name = "catalog/topic_detail.html"
+    success_url = reverse_lazy("catalog:topic-detail")
 
 
 class NewspaperListView(LoginRequiredMixin, generic.ListView):
@@ -166,5 +168,3 @@ class RedactorCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = RedactorCreateForm
     success_url = reverse_lazy("catalog:redactor-list")
     template_name = "catalog/redactor_form.html"
-
-

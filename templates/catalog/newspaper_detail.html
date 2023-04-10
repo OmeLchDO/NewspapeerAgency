@@ -4,7 +4,7 @@
 <div class="content-details">
   <h1 style="text-align: center">{{ newspaper.title }}</h1>
   <p>{{ newspaper.content }}</p>
-  {% if user in newspaper.publishers.all or user.is_staff %}
+  {% if user in newspaper.redactors.all %}
     <a href="{% url 'catalog:newspaper-update' pk=newspaper.id %}" class="btn btn-primary float-right">Update information</a>
     <a href="{% url 'catalog:newspaper-delete' pk=newspaper.id %}" class="btn btn-danger float-right">Delete newspaper</a>
   {% endif %}
@@ -17,6 +17,5 @@
       <strong>Redactor:</strong>
       {{ redactor.first_name }} {{ redactor.last_name }}
   {% endfor %}
-
 </div>
 {% endblock %}
