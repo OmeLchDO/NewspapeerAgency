@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="content-details">
+   <h1>{{ redactor.first_name }} {{ redactor.last_name }} ({{ redactor.username }})</h1>
+
+    <h3>Experience: {{ redactor.years_of_experience}} years</h3>
+
+    <h6><strong>Available newspapers titles:</strong></h6>
+    {% for newspaper in redactor.newspapers.all %}
+        <li>
+          <a href="{{ newspaper.get_absolute_url }}"> {{ newspaper.title }}</a>
+        </li>
+    {% endfor %}
+  </div>
+{% endblock %}
