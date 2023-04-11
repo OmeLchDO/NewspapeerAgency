@@ -12,7 +12,7 @@ The Django-based project allows users to keep track of news articles on various 
 
 ## Check it out
 User:
-- login: adminuser
+- login: adminuser 
 - password: qqqqqqq1
 
 ## Features
