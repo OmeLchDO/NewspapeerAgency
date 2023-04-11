@@ -4,12 +4,14 @@ The Django-based project allows users to keep track of news articles on various 
 
 # Installation
 - git clone https://github.com/OmeLchDO/NewspaperAgency
+- python3 -m venv venv
 - source venv/bin/activate
 - pip install -r requirements.txt
 - python manage.py migrate
 - python manage.py runserver
 
 # Check it out
-User:
+U
+ser:
 - login: adminuser
 - password: qqqqqqq1
