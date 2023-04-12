@@ -16,6 +16,10 @@ The Django-based project allows users to keep track of news articles on various 
 ### Test user:
 - Login: redactor_mate
 - Password: qqqqqqq1
+
 ## Features
 You have the option to view news related to your preferred topic by selecting it from the list of topics and accessing the detailed information. Take a look at our editors and the newspapers they work for, and read fascinating articles.
 
+![Home page](Home.png)
+![Topic _list](Topic.png)
+![My_profile page](Profile.png)
