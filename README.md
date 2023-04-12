@@ -11,9 +11,7 @@ The Django-based project allows users to keep track of news articles on various 
 - python manage.py runserver
 
 ## Check it out
-User:
-- login: adminuser
-- password: qqqqqqq1
+[Newspaper Agency project deployed to Render](https://newspaperagency.onrender.com/)
 
 ## Features
 You have the option to view news related to your preferred topic by selecting it from the list of topics and accessing the detailed information. Take a look at our editors and the newspapers they work for, and read fascinating articles.
